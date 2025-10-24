@@ -1,0 +1,820 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WATCH.FINDS - Online Watch Store</title>
+    <style>
+        /* BASE & TYPOGRAPHY - Elegant and Simple */
+        body {
+            font-family: Georgia, serif; /* Classier serif font */
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F8; /* Near-white background */
+            color: #333; /* Dark gray for prose */
+        }
+
+        /* COLOR PALETTE: #000 (Black), #F8F8F8 (White/Beige), #B8860B (Dark Gold/Copper), #2D2D2D (Deep Charcoal) */
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: #000; /* Solid Black Header */
+            color: #F8F8F8;
+            text-align: center;
+            padding: 25px 20px 0;
+            position: relative; 
+            border-bottom: 5px solid #B8860B; /* Subtle gold accent line */
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .store-name {
+            font-family: 'Times New Roman', serif;
+            font-size: 3.5em; /* Slightly larger, more dominant */
+            margin: 0 0 10px 0;
+            letter-spacing: 4px; /* More spaced out for elegance */
+            font-weight: 300; 
+            color: #F8F8F8;
+        }
+
+        /* Navigation Bar */
+        .main-nav {
+            background-color: #2D2D2D; /* Deep Charcoal Nav Bar */
+            padding: 10px 0;
+            margin-top: 15px;
+        }
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-nav ul li {
+            margin: 0 20px;
+        }
+        .main-nav ul li a {
+            color: #F8F8F8;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05em;
+            padding: 5px 10px;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        .main-nav ul li a:hover {
+            color: #B8860B; /* Subtle Gold on hover */
+            border-bottom: 2px solid #B8860B;
+            background-color: transparent;
+        }
+        
+        /* Search Bar Styles */
+        .search-container {
+            margin-top: 15px;
+            display: flex;
+            width: 90%;
+            max-width: 500px;
+        }
+        .search-container input[type="text"] {
+            padding: 12px;
+            border: 1px solid #B8860B; /* Subtle border */
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            font-size: 1em;
+            flex-grow: 1;
+            outline: none;
+        }
+        .search-container button {
+            padding: 12px 20px;
+            background-color: #B8860B; /* Gold/Copper button */
+            color: white;
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+        .search-container button:hover {
+            background-color: #A57709; /* Darker Gold on hover */
+        }
+        
+        /* SECTION HEADERS */
+        .section-header {
+            text-align: center;
+            padding: 40px 0 20px;
+            font-size: 2.5em;
+            font-weight: 300; 
+            color: #000;
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+            letter-spacing: 2px;
+        }
+        .section-header.featured {
+            background-color: #F8F8F8;
+            color: #2D2D2D;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-top: 0;
+            font-size: 2.2em;
+        }
+        
+        /* PRODUCT SLOTS (Featured and Grid) */
+        .featured-section {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 20px 60px;
+            background-color: #F8F8F8;
+        }
+        .featured-slot, .product-slot {
+            width: 30%;
+            text-align: center;
+            background-color: white;
+            border: 1px solid #E0E0E0;
+            padding: 20px;
+            border-radius: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .featured-slot:hover, .product-slot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .featured-slot img, .product-slot img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0;
+            margin-bottom: 10px;
+        }
+        .featured-slot h3, .product-slot h3 {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.4em;
+            margin: 10px 0 5px 0;
+            color: #2D2D2D;
+        }
+        .featured-slot p, .product-slot p {
+            font-weight: 700;
+            color: #B8860B; /* Gold Price Tag */
+            font-size: 1.1em;
+        }
+        
+        /* ABOUT / WHY US SECTIONS */
+        .info-section {
+            padding: 80px 20px;
+            background-color: #F8F8F8;
+        }
+        .info-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background-color: white;
+        }
+        .info-title { background-color: #2D2D2D; color: #F8F8F8; }
+        .info-text h3 { color: #B8860B; }
+        
+        /* REVIEW SECTION */
+        .review-section { padding: 60px 20px; background-color: white; }
+        .review-title { background-color: #2D2D2D; color: #F8F8F8; }
+        .review-item { 
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #B8860B; /* Gold accent */ 
+            border-radius: 3px;
+            color: #444;
+            font-style: italic;
+        }
+        .review-form {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        .review-textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-family: Georgia, serif;
+            resize: vertical;
+        }
+        .send-btn { 
+            background-color: #2D2D2D; 
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .send-btn:hover:not(:disabled) { background-color: #000; }
+        .send-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* MODAL STYLES (Product & Receipt) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close:hover, .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+        .modal-name {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8em;
+            color: #2D2D2D;
+            margin-top: 0;
+        }
+        .modal-price { 
+            color: #B8860B; 
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .modal-section {
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+        .modal-section h4 {
+            color: #2D2D2D;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .color-options label {
+            margin-right: 15px;
+            font-weight: 300;
+        }
+        .quantity-select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        /* New Input Styles for Contact/Address */
+        .customer-info-fields input,
+        .customer-info-fields textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-family: Georgia, serif;
+        }
+        .customer-info-fields textarea {
+            resize: none;
+        }
+
+        .purchase-btn { 
+            background-color: #B8860B; 
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 3px;
+            width: 100%;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        .purchase-btn:hover { background-color: #A57709; }
+
+        /* RECEIPT STYLES */
+        .receipt-content {
+            max-width: 500px;
+        }
+        .receipt-title {
+            font-family: 'Times New Roman', serif;
+            font-size: 2em;
+            color: #B8860B;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .receipt-subtitle {
+            font-size: 1.2em;
+            color: #2D2D2D;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        .receipt-section p {
+            margin: 8px 0;
+            color: #555;
+        }
+        .receipt-summary {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #2D2D2D;
+        }
+        .receipt-summary p, .receipt-summary h3 {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 1.05em;
+        }
+        .receipt-total {
+            color: #B8860B;
+            font-size: 1.5em !important;
+            margin-top: 15px !important;
+        }
+        .receipt-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #888;
+        }
+        
+        /* Temporary Message Box */
+        #tempMessageBox {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 11;
+            display: none;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+        .msg-success { background-color: #2D2D2D; }
+        .msg-error { background-color: #d9534f; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .store-name { font-size: 2.5em; letter-spacing: 3px; }
+            .section-header { font-size: 1.8em; padding: 25px 0 15px; }
+            .featured-section { flex-direction: column; align-items: center; padding: 20px; }
+            .featured-slot { width: 90%; margin-bottom: 20px; }
+            .products-grid { grid-template-columns: 1fr; gap: 20px; }
+            .info-content { flex-direction: column; padding: 20px; }
+            .info-content.reverse { flex-direction: column; }
+            .main-nav ul { flex-direction: column; align-items: center;}
+            .main-nav ul li { margin: 5px 0; }
+        }
+        
+        .hidden-by-search {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="store-name">WATCH.FINDS</h1>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for watches..." onkeyup="performSearch()">
+                <button onclick="performSearch()">Search</button>
+            </div>
+        </div>
+        
+        <!-- NAVIGATION BAR -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#featuredSection">Home</a></li>
+                <li><a href="#aboutSection">About</a></li>
+                <li><a href="#whyUsSection">Why Us</a></li>
+                <li><a href="#reviewsSection">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+    
+    <!-- FEATURED HEADER -->
+    <h2 class="section-header featured">A Curated Selection of Distinction</h2>
+
+    <section class="featured-section" id="featuredSection">
+        <div class="featured-slot" onclick="openModal(this)">
+            <img src="1.jfif" alt="Classic Chronograph Silver">
+            <h3>Classic Chronograph</h3>
+            <p>$1,298</p>
+        </div>
+        <div class="featured-slot" onclick="openModal(this)">
+            <img src="2.jfif" alt="Sleek Black Mesh Watch">
+            <h3>Sleek Mesh Pro</h3>
+            <p>$1,567</p>
+        </div>
+        <div class="featured-slot" onclick="openModal(this)">
+            <img src="3.jfif" alt="Modern Minimalist White Dial">
+            <h3>Minimalist Modern</h3>
+            <p>$900</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- PRODUCTS HEADER -->
+    <h2 class="section-header">The Full Timepiece Collection</h2>
+    
+    <section class="products-section">
+        <div class="products-grid" id="productsGrid">
+            <div class="product-slot" onclick="openModal(this)">
+                <img src="4.jfif" alt="Luxury Gold-Tone Dress Watch">
+                <h3>Luxury Gold Classic</h3>
+                <p>$2,150</p>
+            </div>
+            <div class="product-slot" onclick="openModal(this)">
+                <img src="5.jfif" alt="Sporty Black Rubber Strap Watch">
+                <h3>Aero Sport Dive</h3>
+                <p>$745</p>
+            </div>
+            <div class="product-slot" onclick="openModal(this)">
+                <img src="6.jfif" alt="Vintage Leather Strap Chronograph">
+                <h3>Heritage Pilot Chrono</h3>
+                <p>$1,120</p>
+            </div>
+            <div class="product-slot" onclick="openModal(this)">
+                <img src="7.jfif" alt="Elegant Two-Tone Dress Watch">
+                <h3>Executive Two-Tone</h3>
+                <p>$1,899</p>
+            </div>
+            <div class="product-slot" onclick="openModal(this)">
+                <img src="8.jfif" alt="Rugged Field Watch with NATO Strap">
+                <h3>Tough Terrain Watch</h3>
+                <p>$599</p>
+            </div>
+            <div class="product-slot" onclick="openModal(this)">
+                <img src="9.jfif" alt="Casual Blue Dial Stainless Steel Watch">
+                <h3>Ocean Voyager</h3>
+                <p>$980</p>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+
+    <!-- ABOUT SECTION -->
+    <section class="info-section" id="aboutSection">
+        <div class="info-container">
+            <h2 class="info-title">The WATCH.FINDS Story 🕰️</h2>
+            <div class="info-content">
+                <div class="info-text">
+                    <h3>Curated Selection, Timeless Quality</h3>
+                    <p>
+                        At **WATCH.FINDS**, we believe a wristwatch is more than just a time-teller; it's a piece of art, a symbol of personal style, and a potential heirloom. Our store was born from a deep, shared passion for **horology**—the study and measurement of time.
+                    </p>
+                    <p>
+                        We don't just sell watches; we meticulously **curate** them. Our collection spans from rugged sports watches designed for adventure to delicate luxury pieces perfect for a gala. Each timepiece is chosen for its **craftsmanship, history, and enduring design**. When you purchase from us, you're not just buying a watch, you're investing in a legacy.
+                    </p>
+                </div>
+                <div class="info-image-container">
+                    <img src="19.jfif" alt="Image of a fine watch under a magnifying glass" class="info-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- WHY US SECTION -->
+    <section class="info-section" id="whyUsSection" style="background-color: #F8F8F8;">
+        <div class="info-container">
+            <h2 class="info-title">Why Trust WATCH.FINDS? ✨</h2>
+            <div class="info-content reverse">
+                <div class="info-text">
+                    <h3>Your Assurance of Excellence</h3>
+                    <p>
+                        Choosing an online retailer for a significant purchase requires confidence. We’ve built our business on three core pillars to give you complete peace of mind:
+                    </p>
+                    <ul>
+                        <li>**100% Authenticity Guarantee:** Every single watch is inspected and authenticated by our GIA-trained experts, ensuring you never receive a counterfeit.</li>
+                        <li>**Expert Support:** Our specialists are on standby to answer technical questions, guide you through movements, or help you find the perfect gift.</li>
+                        <li>**Secure & Insured Shipping:** We treat every timepiece like the valuable item it is, guaranteeing safe, fast, and fully insured delivery right to your door.</li>
+                    </ul>
+                    <p>
+                        Experience the difference that dedication and expertise make. Your next favorite watch is waiting, backed by our promise of quality.
+                    </p>
+                </div>
+                <div class="info-image-container">
+                    <img src="20.jfif" alt="Image of a quality stamp or seal of approval" class="info-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+
+    <!-- REVIEW SECTION -->
+    <section class="review-section" id="reviewsSection"> 
+        <div class="review-box">
+            <h2 class="review-title">Customer Reviews</h2>
+            <div id="reviewsList" class="reviews-list">
+        
+                <div class="review-item">JOYCE FRANZEL(CLIENT):add some reciept and a search bar for easy navigation and make the design more elegant and appealing that's all</div>
+            </div>
+            <div class="review-form">
+                <textarea id="reviewTextarea" class="review-textarea" placeholder="Type your review here..."></textarea>
+                <button id="sendBtn" class="send-btn" onclick="sendReview()">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT MODAL -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="Product Image">
+            <h2 id="modalName" class="modal-name"></h2>
+            <p id="modalPrice" class="modal-price"></p>
+            
+            <div class="modal-section">
+                <h4>Quantity</h4>
+                <select id="quantitySelect" class="quantity-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            
+            <div class="modal-section">
+                <h4>Color</h4>
+                <div class="color-options">
+                    <label class="color-option">
+                        <input type="radio" name="color" value="Black" id="colorBlack" checked> Black
+                    </label>
+                    <label class="color-option">
+                        <input type="radio" name="color" value="Silver"> Silver
+                    </label>
+                    <label class="color-option">
+                        <input type="radio" name="color" value="Gold"> Gold
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-section customer-info-fields">
+                <h4>Shipping & Contact Information</h4>
+                <input type="text" id="customerName" placeholder="Full Name (Required)">
+                <input type="email" id="customerEmail" placeholder="Email Address (Required)">
+                <textarea id="customerAddress" placeholder="Full Shipping Address (Required)"></textarea>
+            </div>
+
+            <button id="purchaseBtn" class="purchase-btn" onclick="purchaseItem()">Complete Purchase</button>
+        </div>
+    </div>
+    
+    <!-- RECEIPT MODAL -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content receipt-content">
+            <span class="close" onclick="closeReceiptModal()">&times;</span>
+            <h2 class="receipt-title">Order Confirmation</h2>
+            <div id="receiptDetails">
+                <!-- Receipt content will be injected here by JavaScript -->
+            </div>
+            <p class="receipt-footer">Thank you for choosing WATCH.FINDS. You will receive a shipment notification via email soon.</p>
+            <button class="purchase-btn" onclick="closeReceiptModal()">Close Receipt</button>
+        </div>
+    </div>
+    
+    <!-- Temporary Message Box for alerts/errors -->
+    <div id="tempMessageBox" class="msg-success"></div>
+
+    <script>
+        // Helper function to show temporary messages (replaces alert/confirm)
+        function showTemporaryMessage(message, type = 'success') {
+            const msgBox = document.getElementById('tempMessageBox');
+            msgBox.textContent = message;
+            msgBox.className = type === 'error' ? 'msg-error' : 'msg-success';
+            msgBox.style.display = 'block';
+
+            setTimeout(() => {
+                msgBox.style.display = 'none';
+            }, 3500);
+        }
+
+        function openModal(slot) {
+            const img = slot.querySelector('img');
+            const name = slot.querySelector('h3').textContent;
+            const price = slot.querySelector('p').textContent;
+            
+            document.getElementById('modalImage').src = img.src;
+            document.getElementById('modalImage').alt = img.alt;
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalPrice').textContent = price;
+            
+            // Reset quantity and color for new modal
+            document.getElementById('quantitySelect').value = '1';
+            
+            const defaultColorRadio = document.getElementById('colorBlack');
+            if (defaultColorRadio) {
+                 defaultColorRadio.checked = true;
+            } else {
+                 document.querySelector('input[name="color"][value="Black"]').checked = true;
+            }
+
+            // Clear customer info fields when opening
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerAddress').value = '';
+
+            document.getElementById('productModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receiptModal').style.display = 'none';
+        }
+        
+        function purchaseItem() {
+            // 1. Get Product Details
+            const productName = document.getElementById('modalName').textContent;
+            const priceString = document.getElementById('modalPrice').textContent.replace('$', '').replace(',', '');
+            const unitPrice = parseFloat(priceString);
+            const quantity = parseInt(document.getElementById('quantitySelect').value);
+            const color = document.querySelector('input[name="color"]:checked').value;
+
+            // 2. Get Customer Details & Validation
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerEmail = document.getElementById('customerEmail').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+
+            if (!customerName || !customerEmail || !customerAddress) {
+                showTemporaryMessage("Please fill in all required shipping and contact details.", "error");
+                return;
+            }
+            
+            // Simple email format check
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(customerEmail)) {
+                showTemporaryMessage("Please enter a valid email address.", "error");
+                return;
+            }
+
+            // 3. Calculate Total (Mock Calculation)
+            const subtotal = unitPrice * quantity;
+            const shipping = 50.00; // Mock fixed shipping fee
+            const taxRate = 0.05; // 5% tax
+            const tax = subtotal * taxRate;
+            const total = subtotal + shipping + tax;
+            const orderId = 'WFA' + Math.floor(Math.random() * 900000 + 100000); // Simple mock ID
+
+            // 4. Populate Receipt Modal
+            const receiptDetails = document.getElementById('receiptDetails');
+            receiptDetails.innerHTML = `
+                <div class="receipt-section">
+                    <h4 class="receipt-subtitle">Order ID: ${orderId}</h4>
+                    <p><strong>Item:</strong> ${productName} (${color})</p>
+                    <p><strong>Quantity:</strong> ${quantity}</p>
+                    <p><strong>Unit Price:</strong> $${unitPrice.toFixed(2)}</p>
+                </div>
+                <div class="receipt-section">
+                    <h4 class="receipt-subtitle">Shipping Information</h4>
+                    <p><strong>Recipient:</strong> ${customerName}</p>
+                    <p><strong>Email:</strong> ${customerEmail}</p>
+                    <p><strong>Shipping Address:</strong> ${customerAddress}</p>
+                </div>
+                <div class="receipt-summary">
+                    <p>Subtotal: <span>$${subtotal.toFixed(2)}</span></p>
+                    <p>Shipping: <span>$${shipping.toFixed(2)}</span></p>
+                    <p>Tax (5%): <span>$${tax.toFixed(2)}</span></p>
+                    <h3 class="receipt-total">Order Total: <span>$${total.toFixed(2)}</span></h3>
+                </div>
+            `;
+
+            // 5. Display Receipt and show success message
+            closeModal();
+            document.getElementById('receiptModal').style.display = 'block';
+            showTemporaryMessage("Purchase successful! Your order has been placed.", "success");
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const productModal = document.getElementById('productModal');
+            const receiptModal = document.getElementById('receiptModal');
+            if (event.target === productModal) {
+                closeModal();
+            }
+            if (event.target === receiptModal) {
+                closeReceiptModal();
+            }
+        }
+
+        // ------------------------------------
+        // SEARCH FUNCTIONALITY
+        // ------------------------------------
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const allSlots = [
+                ...document.querySelectorAll('.product-slot'),
+                ...document.querySelectorAll('.featured-slot')
+            ];
+
+            allSlots.forEach(slot => {
+                const productNameElement = slot.querySelector('h3');
+                const name = productNameElement ? productNameElement.textContent.toLowerCase() : '';
+
+                slot.classList.remove('hidden-by-search', 'highlight');
+
+                if (query === '') {
+                    return; 
+                }
+
+                if (name.includes(query)) {
+                    slot.classList.remove('hidden-by-search');
+                    if (slot.classList.contains('featured-slot')) {
+                        slot.classList.add('highlight');
+                    }
+                } else {
+                    slot.classList.add('hidden-by-search');
+                }
+            });
+        }
+        // ------------------------------------
+
+        // Review Functionality
+        function sendReview() {
+            const textarea = document.getElementById('reviewTextarea');
+            const reviewText = textarea.value.trim();
+            
+            if (reviewText === '') {
+                showTemporaryMessage('Please enter a review before sending.', 'error');
+                return;
+            }
+            
+            const reviewsList = document.getElementById('reviewsList');
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-item';
+            reviewItem.textContent = reviewText; 
+            
+            reviewsList.insertBefore(reviewItem, reviewsList.firstChild);
+            
+            textarea.value = '';
+            document.getElementById('sendBtn').disabled = true; 
+            showTemporaryMessage('Your review has been submitted!', 'success');
+        }
+
+        document.getElementById('reviewTextarea').addEventListener('input', function() {
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.disabled = this.value.trim() === '';
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+             const textarea = document.getElementById('reviewTextarea');
+             const sendBtn = document.getElementById('sendBtn');
+             sendBtn.disabled = textarea.value.trim() === '';
+        });
+    </script>
+</body>
+</html>
